@@ -1,0 +1,35 @@
+# Executed for:
+# - [yes] Interactive Shells
+# - [yes] The Login Shell
+# - [yes] Shell Scripts
+
+# Order:
+# zshenv - zprofile - zshrc - zlogin
+
+export EDITOR=nvim
+
+# Pager
+if type "nvimpager" > /dev/null 2>&1
+then
+    export PAGER="nvimpager"
+    alias less=$PAGER
+    alias more=$PAGER 
+    export MANPAGER="nvimpager"
+fi
+
+# For NPCMJ
+NPCMJ_SETPATH_SOURCE=$HOME/NPCMJ/programs2/set_path.sh
+NPCMJ_PROGRAMS=$HOME/NPCMJ/programs2
+NPCMJ_READY_POLY_SETPATH_SOURCE=$HOME/NPCMJ/ready/polyml/set_path.sh
+NPCMJ_READY_POLY=$HOME/NPCMJ/ready/polyml
+
+if [ -f $NPCMJ_SETPATH_SOURCE ]; then
+	. $NPCMJ_SETPATH_SOURCE $NPCMJ_PROGRAMS
+	. $NPCMJ_READY_POLY_SETPATH_SOURCE $NPCMJ_READY_POLY
+else
+	echo "NPCMJ: No NPCMJ files detected" 
+fi
+
+# For Kainoki-JMOR
+alias jmori='rlwrap -H ~/tmp/output_jmor CHAT mor -l/home/twotrees12/Desktop/share/Kusunoki/dictionary +xi'
+alias jmor='CHAT mor +d -l/home/twotrees12/Desktop/share/Kusunoki/dictionary'

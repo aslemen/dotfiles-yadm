@@ -1,0 +1,28 @@
+# The following lines were added by compinstall
+#
+# Complementizer
+autoload -Uz compinit
+compinit
+zstyle ':completion:*:default' menu select=2
+
+# History
+HISTFILE=~/.local/share/zsh/histfile
+HISTSIZE=10000000
+SAVEHIST=10000000
+setopt HIST_IGNORE_DUPS
+
+# Keybind: vim
+bindkey -v
+
+# Aliases
+alias ls="ls --color=always" 
+alias vim="nvim"
+
+# Init of Prezto
+export ZPREZTODIR=${HOME}/.local/share/prezto
+if [ -f ${ZPREZTODIR}/init.zsh ]; then
+	source ${ZPREZTODIR}/init.zsh
+else
+	echo "No Prezto detected" 
+fi
+# NOTE: putting these codes here is justified by the fact that nothing other interactive zsh sessions requires it.

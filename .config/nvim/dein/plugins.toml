@@ -1,0 +1,94 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'wsdjeg/dein-ui.vim'
+
+# Color Scheme
+[[plugins]]
+repo = 'flazz/vim-colorschemes'
+hook_add = '''
+	colorscheme lucius
+'''
+
+# Status Line
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+hook_add = '''
+	let g:airline_theme = 'bubblegum'
+'''
+
+# IM
+[[plugins]]
+#repo = 'vim-scripts/fcitx.vim'
+repo = 'fuenor/im_control.vim'
+on_cmd = 'fcitx'
+hook_add = '''
+	let IM_CtrlMode = 6
+'''
+	
+# Complementizer
+[[plugins]]
+repo = 'roxma/nvim-completion-manager'
+hook_add = '''
+	set complete=.,w,b,u,U,i,d,t,k,kspell
+
+"	if has("autocmd") && exists("+omnifunc")
+"		autocmd Filetype *
+"				\   if &omnifunc == "" |
+"				\           setlocal omnifunc=syntaxcomplete#Complete |
+"				\   endif
+"	endif
+
+	let g:cm_smart_enable = 1
+	let g:cm_refresh_default_min_word_len = [[1, 2]]
+'''
+
+[[plugins]]
+repo = 'SirVer/ultisnips'
+hook_add = '''
+	let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
+	let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
+	let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
+	let g:UltiSnipsRemoveSelectModeMappings = 0
+
+	" optional
+	inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
+'''
+
+# Quotator
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+# File Manager
+[[plugins]] # NERDTree
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+	let g:NERDTreeShowBookmarks=1
+'''
+
+[[plugins]] # NERDTree-tabs
+repo = 'jistr/vim-nerdtree-tabs'
+hook_post_source = '''
+	map <Leader>no <Plug>NERDTreeTabsToggle<CR>
+	map <Leader>nf <Plug>NERDTreeFocusToggle<CR>
+'''
+
+[[plugins]]
+repo = 'Konfekt/FastFold'
+hook_add = '''
+	let g:tex_fold_enabled=1
+	let g:vimsyn_folding='af'
+	let g:xml_syntax_folding=1
+'''
+
+# Git Manager
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+# Make
+[[plugins]]
+repo = 'neomake/neomake'
