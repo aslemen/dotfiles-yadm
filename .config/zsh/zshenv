@@ -17,6 +17,12 @@ then
     export MANPAGER="nvimpager"
 fi
 
+# For Nim
+if [ -d ${HOME}/.nimble/bin ]
+then
+    export PATH=${HOME}/.nimble/bin:${PATH}
+fi
+
 # For NPCMJ
 NPCMJ_SETPATH_SOURCE=$HOME/NPCMJ/programs2/set_path.sh
 NPCMJ_PROGRAMS=$HOME/NPCMJ/programs2
