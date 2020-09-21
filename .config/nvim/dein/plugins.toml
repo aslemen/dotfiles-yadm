@@ -32,22 +32,6 @@ hook_add = '''
 	
 # Complementizer
 [[plugins]]
-repo = 'roxma/nvim-completion-manager'
-hook_add = '''
-	set complete=.,w,b,u,U,i,d,t,k,kspell
-
-"	if has("autocmd") && exists("+omnifunc")
-"		autocmd Filetype *
-"				\   if &omnifunc == "" |
-"				\           setlocal omnifunc=syntaxcomplete#Complete |
-"				\   endif
-"	endif
-
-	let g:cm_smart_enable = 1
-	let g:cm_refresh_default_min_word_len = [[1, 2]]
-'''
-
-[[plugins]]
 repo = 'SirVer/ultisnips'
 hook_add = '''
 	let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
