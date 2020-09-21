@@ -6,7 +6,7 @@
 # Order:
 # zshenv - zprofile - zshrc - zlogin
 
-if type "archey3" > /dev/null 2>&1
-then
-    archey3 -c yellow
-fi
+#if type "archey3" > /dev/null 2>&1
+#then
+#    archey3 -c yellow
+#fi

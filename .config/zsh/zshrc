@@ -15,8 +15,8 @@ setopt HIST_IGNORE_DUPS
 bindkey -v
 
 # Aliases
-alias ls="ls --color=always" 
-alias vim="nvim"
+# alias ls="ls --color=always" 
+# alias vim="nvim"
 
 # Init of Prezto
 export ZPREZTODIR=${HOME}/.local/share/prezto
