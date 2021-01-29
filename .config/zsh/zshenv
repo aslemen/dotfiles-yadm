@@ -17,9 +17,15 @@ then
     export MANPAGER="nvimpager"
 fi
 
-# For Nim
-if [ -d ${HOME}/.nimble/bin ]
-then
-    export PATH=${HOME}/.nimble/bin:${PATH}
-fi
+# ========================
+# ENVs of packages
+# ========================
 
+# ------------------------
+# Nim
+# ------------------------
+DIR_NIM=${HOME}/.nimble/
+if [ -d ${DIR_NIM} ]
+then
+    export PATH=${DIR_NIM}/bin:${PATH}
+fi
