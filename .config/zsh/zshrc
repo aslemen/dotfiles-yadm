@@ -1,28 +1,61 @@
-# The following lines were added by compinstall
-#
+# Executed for:
+# - [yes] Interactive Shells
+# - [yes] The Login Shell
+# - [no] Shell Scripts
+
+# Order:
+# zshenv - zprofile - zshrc - zlogin
+
+# ========================
+# Welcome message
+# ========================
+#if command -v wslfetch; then
+#	wslfetch --colorbar
+#fi
+
+
+# ========================
+# Initializations
+# ========================
+
+# ------------------------
+# Prezto
+# ------------------------
+# NOTE: this command should be put here since only interactive shells need it
+ZPREZTODIR=${HOME}/.local/share/prezto
+ZPREZTO_COMP_EXT=${ZPREZTODIR}/modules/completion/external/src
+
+if [ -f ${ZPREZTODIR}/init.zsh ]; then
+	export ZPREZTODIR
+	source ${ZPREZTODIR}/init.zsh
+	echo "[zshrc] Prezto loaded"
+else
+	echo "[zshrc] Prezto not detected" 
+fi
+# ========================
+# Settings
+# ========================
+
+# ------------------------
 # Complementizer
-autoload -Uz compinit
-compinit
+# ------------------------
 zstyle ':completion:*:default' menu select=2
 
+# ------------------------
 # History
+# ------------------------
 HISTFILE=~/.local/share/zsh/histfile
 HISTSIZE=10000000
 SAVEHIST=10000000
 setopt HIST_IGNORE_DUPS
 
+# ------------------------
 # Keybind: vim
-bindkey -v
+# ------------------------
+#bindkey -v
 
+# ------------------------
 # Aliases
+# ------------------------
 # alias ls="ls --color=always" 
 # alias vim="nvim"
-
-# Init of Prezto
-export ZPREZTODIR=${HOME}/.local/share/prezto
-if [ -f ${ZPREZTODIR}/init.zsh ]; then
-	source ${ZPREZTODIR}/init.zsh
-else
-	echo "No Prezto detected" 
-fi
-# NOTE: putting these codes here is justified by the fact that nothing other interactive zsh sessions requires it.
