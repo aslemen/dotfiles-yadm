@@ -32,6 +32,42 @@ if [ -f ${ZPREZTODIR}/init.zsh ]; then
 else
 	echo "[zshrc] Prezto not detected" 
 fi
+
+# ------------------------
+# pyenv
+# ------------------------
+# NOTE: 
+#    This init code is put here (rather than zshenv) 
+#    so that pyenv does not affect other system commands
+
+if command -v pyenv 1>/dev/null 2>&1
+then
+	eval "$(pyenv init -)"
+	echo "[zshrc] pyenv loaded"
+else
+	echo "[zshrc] pyenv not detected"
+fi
+
+# ------------------------
+# poetry
+# ------------------------
+# saving completion codes to prezto dir
+POETRY_COMP=${ZPREZTO_COMP_EXT}/_poetry
+
+if command -v poetry 1>/dev/null 2>&1
+then 
+	echo "[zshrc] poetry detected"
+	if [ -f ${POETRY_COMP} ]; then
+		echo "[zshrc] poetry completion file found at ${POETRY_COMP}"
+	else
+		poetry completions zsh > ${POETRY_COMP}
+		autoload -Uz compinit; compinit # reload complementizer
+		echo "[zshrc] poetry completion file created at ${POETRY_COMP}"
+	fi
+else
+	echo "[zshrc] poetry not detected"
+fi
+
 # ========================
 # Settings
 # ========================

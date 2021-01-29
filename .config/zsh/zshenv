@@ -29,3 +29,24 @@ if [ -d ${DIR_NIM} ]
 then
     export PATH=${DIR_NIM}/bin:${PATH}
 fi
+
+# ------------------------
+# Deno
+# ------------------------
+DIR_DENO=${HOME}/.local/share/deno
+if [ -d ${DIR_DENO} ]
+then
+    export DENO_INSTALL=${DIR_DENO}
+    export PATH=${DENO_INSTALL}/bin:${PATH}
+    export DENO_DIR=${HOME}/.cache/deno
+fi
+
+# ------------------------
+# pyenv
+# ------------------------
+DIR_PYENV=${HOME}/.local/share/pyenv
+if [ -f ${DIR_PYENV}/bin/pyenv ]
+then
+    export PYENV_ROOT=${DIR_PYENV}
+    export PATH=${PYENV_ROOT}/bin:${PATH}
+fi
