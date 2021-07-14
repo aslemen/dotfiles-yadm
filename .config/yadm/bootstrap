@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# https://github.com/TheLocehiliosan/yadm/blob/master/contrib/bootstrap/bootstrap-in-dir
+
+# Save this file as ~/.config/yadm/bootstrap and make it executable. It will
+# execute all executable files (excluding templates and editor backups) in the
+# ~/.config/yadm/bootstrap.d directory when run.
+
+set -eu
+
+# Directory to look for bootstrap executables in
+BOOTSTRAP_D="${BASH_SOURCE[0]}.d"
+
+if [[ ! -d "$BOOTSTRAP_D" ]]; then
+    echo "[yadm bootstrap] Error: bootstrap directory '$BOOTSTRAP_D' not found" >&2
+    exit 1
+fi
+
+# https://fumiyas.github.io/2013/12/06/tempfile.sh-advent-calendar.html
+tmp_execs=$(mktemp)
+atexit () {
+    [[ -n ${tmp_execs-} ]] && rm -f "${tmp_execs}"
+}
+trap atexit EXIT
+
+find "$BOOTSTRAP_D" -executable -type f,l \
+    | sed -r -e '/##|~\$/d' \
+    | sort \
+    > ${tmp_execs}
+
+while IFS= read -u 3 -r subscript
+do
+    echo "[yadm bootstrap] Sub-bootstrap script detected: ${subscript}" >&2
+    
+    ${subscript}
+
+    if [ $? -gt 0 ]; then
+        echo "Error: bootstrap '${subscript}' failed" >&2
+        exit 1
+    fi
+done 3< ${tmp_execs} 

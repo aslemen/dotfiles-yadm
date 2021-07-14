@@ -1,0 +1,25 @@
+#!/bin/sh
+
+echo "[yadm bootstrap 00-main] for Linux (or WSL) machines has been invoked" >&2
+
+# TODO: zsh, prezto
+
+while true; do
+	read -p "Will you install pyenv? [y/n] : " yn
+	case $yn in
+		[Yy]* ) echo "(To be implemented)" >&2; break;;
+		# TODO: to set adequate path
+
+		[Nn]* ) break;;
+	esac
+done
+
+while true; do
+	read -p "Will you install Haskell Stack? [y/n] " yn
+	case $yn in
+		[Yy]* ) echo "(To be implemented)" >&2; break;;
+		[Nn]* ) break;;
+	esac
+done
+
+# TODO: elan for lean
