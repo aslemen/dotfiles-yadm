@@ -28,9 +28,9 @@ ZPREZTO_COMP_EXT=${ZPREZTODIR}/modules/completion/external/src
 if [ -f ${ZPREZTODIR}/init.zsh ]; then
 	export ZPREZTODIR
 	source ${ZPREZTODIR}/init.zsh
-	echo "[zshrc] Prezto loaded"
+	echo "[zshrc] Prezto loaded" >&2
 else
-	echo "[zshrc] Prezto not detected" 
+	echo "[zshrc] Prezto not detected" >&2
 fi
 
 # ------------------------
@@ -43,9 +43,9 @@ fi
 if command -v pyenv 1>/dev/null 2>&1
 then
 	eval "$(pyenv init -)"
-	echo "[zshrc] pyenv loaded"
+	echo "[zshrc] pyenv loaded" >&2
 else
-	echo "[zshrc] pyenv not detected"
+	echo "[zshrc] pyenv not detected" >&2
 fi
 
 # ------------------------
@@ -56,16 +56,16 @@ POETRY_COMP=${ZPREZTO_COMP_EXT}/_poetry
 
 if command -v poetry 1>/dev/null 2>&1
 then 
-	echo "[zshrc] poetry detected"
+	echo "[zshrc] poetry detected" >&2
 	if [ -f ${POETRY_COMP} ]; then
-		echo "[zshrc] poetry completion file found at ${POETRY_COMP}"
+		echo "[zshrc] poetry completion file found at ${POETRY_COMP}" >&2
 	else
 		poetry completions zsh > ${POETRY_COMP}
 		autoload -Uz compinit; compinit # reload complementizer
-		echo "[zshrc] poetry completion file created at ${POETRY_COMP}"
+		echo "[zshrc] poetry completion file created at ${POETRY_COMP}" >&2
 	fi
 else
-	echo "[zshrc] poetry not detected"
+	echo "[zshrc] poetry not detected" >&2
 fi
 
 # ------------------------
@@ -74,7 +74,7 @@ fi
 function gitignr() {
 	curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;
 }
-echo "[zshrc] gitignore.io CLI command defined as gitignr"
+echo "[zshrc] gitignore.io CLI command defined as gitignr" >&2
 
 # ========================
 # Settings
