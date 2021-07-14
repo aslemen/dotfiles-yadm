@@ -68,6 +68,14 @@ else
 	echo "[zshrc] poetry not detected"
 fi
 
+# ------------------------
+# gitignore.io
+# ------------------------
+function gitignr() {
+	curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;
+}
+echo "[zshrc] gitignore.io CLI command defined as gitignr"
+
 # ========================
 # Settings
 # ========================
