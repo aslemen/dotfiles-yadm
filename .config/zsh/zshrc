@@ -43,6 +43,7 @@ fi
 if command -v pyenv 1>/dev/null 2>&1
 then
 	eval "$(pyenv init -)"
+	eval "$(pyenv init --path)"
 	echo "[zshrc] pyenv loaded" >&2
 else
 	echo "[zshrc] pyenv not detected" >&2
@@ -69,12 +70,58 @@ else
 fi
 
 # ------------------------
+# Deno
+# ------------------------
+DENO_COMP=${ZPREZTO_COMP_EXT}/_deno
+
+if command -v deno 1>/dev/null 2>&1
+then
+	echo "[zshrc] Deno detected" >&2
+	if [ -f ${DENO_COMP} ]; then
+		echo "[zshrc] Deno completion file found at ${DENO_COMP}" >&2
+	else
+		deno completions zsh > ${DENO_COMP}
+		autoload -Uz compinit; compinit # reolad complementizer
+		echo "[zshrc] Deno completion file created at ${DENO_COMP}" >&2
+	fi
+else
+	echo "[zshrc] Deno not detected" >&2
+fi
+
+# ------------------------
+# opam
+# ------------------------
+OPAM_INIT=${HOME}/.local/share/opam/opam-init/init.zsh
+
+if [ -r ${OPAM_INIT} ] 
+then
+    echo "[zshrc] opam root detected" >&2
+    source ${OPAM_INIT}  > /dev/null 2> /dev/null 
+else
+    echo "[zshrc] opam root not detected" >&2
+fi
+
+# ------------------------
+# chruby
+# ------------------------
+CHRUBY_SCRIPT=/usr/local/share/chruby/chruby.sh
+
+if [ -f ${CHRUBY_SCRIPT} ]
+then
+    echo "[zshrc] chruby detected" >&2
+    source ${CHRUBY_SCRIPT}
+    # chruby auto-switch
+else
+    echo "[zshrc] chruby not detected" >&2
+fi
+
+# ------------------------
 # gitignore.io
 # ------------------------
-function gitignr() {
+function gen-gitignore() {
 	curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;
 }
-echo "[zshrc] gitignore.io CLI command defined as gitignr" >&2
+echo "[zshrc] gitignore.io CLI command defined as gen-gitignore" >&2
 
 # ========================
 # Settings
