@@ -18,6 +18,9 @@
 # Initializations
 # ========================
 
+STR_LOADED="[37;42;1mloaded[m"
+STR_NOT_DETECTED="[31mnot found[m"
+
 # ------------------------
 # Prezto
 # ------------------------
@@ -28,13 +31,13 @@ ZPREZTO_COMP_EXT=${ZPREZTODIR}/modules/completion/external/src
 if [ -f ${ZPREZTODIR}/init.zsh ]; then
 	export ZPREZTODIR
 	source ${ZPREZTODIR}/init.zsh
-	echo "[zshrc] Prezto loaded" >&2
+	echo "[zshrc] ${STR_LOADED}: Prezto" >&2
 else
-	echo "[zshrc] Prezto not detected" >&2
+	echo "[zshrc] ${STR_NOT_DETECTED}: Prezto" >&2
 fi
 
 # ------------------------
-# pyenv
+# 
 # ------------------------
 # NOTE: 
 #    This init code is put here (rather than zshenv) 
@@ -44,9 +47,9 @@ if command -v pyenv 1>/dev/null 2>&1
 then
 	eval "$(pyenv init -)"
 	eval "$(pyenv init --path)"
-	echo "[zshrc] pyenv loaded" >&2
+	echo "[zshrc] ${STR_LOADED}: pyenv" >&2
 else
-	echo "[zshrc] pyenv not detected" >&2
+	echo "[zshrc] ${STR_NOT_DETECTED}: pyenv" >&2
 fi
 
 # ------------------------
@@ -57,7 +60,7 @@ POETRY_COMP=${ZPREZTO_COMP_EXT}/_poetry
 
 if command -v poetry 1>/dev/null 2>&1
 then 
-	echo "[zshrc] poetry detected" >&2
+	echo "[zshrc] ${STR_LOADED}: poetry" >&2
 	if [ -f ${POETRY_COMP} ]; then
 		echo "[zshrc] poetry completion file found at ${POETRY_COMP}" >&2
 	else
@@ -66,7 +69,7 @@ then
 		echo "[zshrc] poetry completion file created at ${POETRY_COMP}" >&2
 	fi
 else
-	echo "[zshrc] poetry not detected" >&2
+	echo "[zshrc] ${STR_NOT_DETECTED}: poetry" >&2
 fi
 
 # ------------------------
@@ -76,7 +79,7 @@ DENO_COMP=${ZPREZTO_COMP_EXT}/_deno
 
 if command -v deno 1>/dev/null 2>&1
 then
-	echo "[zshrc] Deno detected" >&2
+	echo "[zshrc] ${STR_LOADED}: Deno" >&2
 	if [ -f ${DENO_COMP} ]; then
 		echo "[zshrc] Deno completion file found at ${DENO_COMP}" >&2
 	else
@@ -85,7 +88,7 @@ then
 		echo "[zshrc] Deno completion file created at ${DENO_COMP}" >&2
 	fi
 else
-	echo "[zshrc] Deno not detected" >&2
+	echo "[zshrc] ${STR_NOT_DETECTED}: Deno" >&2
 fi
 
 # ------------------------
@@ -95,10 +98,10 @@ OPAM_INIT=${HOME}/.local/share/opam/opam-init/init.zsh
 
 if [ -r ${OPAM_INIT} ] 
 then
-    echo "[zshrc] opam root detected" >&2
+    echo "[zshrc] ${STR_LOADED}: opam" >&2
     source ${OPAM_INIT}  > /dev/null 2> /dev/null 
 else
-    echo "[zshrc] opam root not detected" >&2
+    echo "[zshrc] ${STR_NOT_DETECTED}: opam" >&2
 fi
 
 # ------------------------
@@ -108,11 +111,11 @@ CHRUBY_SCRIPT=/usr/local/share/chruby/chruby.sh
 
 if [ -f ${CHRUBY_SCRIPT} ]
 then
-    echo "[zshrc] chruby detected" >&2
+    echo "[zshrc] ${STR_LOADED}: chruby" >&2
     source ${CHRUBY_SCRIPT}
     # chruby auto-switch
 else
-    echo "[zshrc] chruby not detected" >&2
+    echo "[zshrc] ${STR_NOT_DETECTED}: chruby" >&2
 fi
 
 # ------------------------
