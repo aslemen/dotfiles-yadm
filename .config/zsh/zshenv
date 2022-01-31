@@ -63,15 +63,17 @@ export AGDA_DIR=${LSHARE}/agda
 # Elan (Lean)
 # ------------------------
 ELAN_DIR=${LSHARE}/elan
+export ELAN_HOME=${ELAN_DIR} # export for installation
+
 if [ -f ${ELAN_DIR}/bin/lean ]
 then
-    export ELAN_HOME=${ELAN_DIR}
     export PATH=${ELAN_HOME}/bin:${PATH}
 fi
 
 # ------------------------
 # Rustup
 # ------------------------
+# export for installation
 export RUSTUP_HOME=${LSHARE}/rustup
 export CARGO_HOME=${LSHARE}/cargo
 
@@ -80,11 +82,23 @@ then
     export PATH=${CARGO_HOME}/bin:${PATH}
 fi
 
+# ------------------------
+# Haskell Toolchain
+# ------------------------
+# export for ghcup installation
+export GHCUP_USE_XDG_DIRS=1
 
 # ------------------------
 # opam
 # ------------------------
 if type opam &> /dev/null
 then
-    export OPAMROOT=${HOME}/.local/share/opam
+    export OPAMROOT=${LSHARE}/opam
 fi
+
+# ------------------------
+# Roswell (for Common Lisp)
+# ------------------------
+# export for ros installation
+export ROSWELL_HOME=${LSHARE}/roswell
+# ref. https://github.com/roswell/roswell/issues/493
