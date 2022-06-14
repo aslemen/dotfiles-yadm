@@ -23,10 +23,10 @@
 
     "modules-left": [
         "sway/workspaces",
-        "sway/mode"
+        "sway/mode",
+        "sway/window"
     ],
     "modules-center": [
-        "sway/window"
     ],
     "modules-right": [
         "tray",
@@ -48,7 +48,7 @@
     // -------------------------------------------------------------------------
 
     "backlight": {
-        "format": " {percent}%",
+        "format": " {percent:>3}%",
         "interval": 2,
         "on-scroll-up": "brightnessctl set +2%",
         "on-scroll-down": "brightnessctl set 2%-"
@@ -63,7 +63,7 @@
         // Connected to AC
         "format": " {icon} {capacity}%", // Icon: bolt
         // Not connected to AC
-        "format-discharging": "{icon} {capacity}%",
+        "format-discharging": "{icon} {capacity:>3}%",
         "format-icons": [
             "",  // Icon: battery-empty
             "", // Icon: battery-quarter
@@ -76,13 +76,13 @@
 
     "clock": {
         "interval": 1,
-        "format": "{:%F %a %T}",
+        "format": " {:%F %a %T}",
         "tooltip": false
     },
 
     "cpu": {
         "interval": 3,
-        "format": " {usage}% ({load})", // Icon: microchip
+        "format": " {usage:>3d}% ({load: 2.2f})", // Icon: microchip
         "states": {
           "warning": 70,
           "critical": 90
@@ -112,7 +112,7 @@
 
     "memory": {
         "interval": 3,
-        "format": " {}%", // Icon: memory
+        "format": " {:>3}%", // Icon: memory
         "states": {
             "warning": 70,
             "critical": 90
@@ -121,7 +121,7 @@
 
     "network": {
         "interval": 3,
-        "format-wifi": " {essid:.<9.6} {signalStrength}%", // Icon: wifi
+        "format-wifi": " {essid:.<9.6} {signalStrength:>3}%", // Icon: wifi
         "format-ethernet": "", // Icon: ethernet
         "format-disconnected": "⚠  Disconnected",
         "tooltip-format": "{ifname} {ipaddr}/{cidr}"
@@ -129,7 +129,7 @@
 
     "pulseaudio": {
         "scroll-step": 2,
-        "format": "{icon} {volume}%",
+        "format": "{icon} {volume:>3}%",
         "format-muted": " Muted", // Icon: volume-mute
         "format-icons": {
             "headphones": "", // Icon: headphones
