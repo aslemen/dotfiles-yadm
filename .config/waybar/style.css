@@ -52,11 +52,11 @@
 
 /* The whole bar */
 * {
-    font-family: Source Han Mono Regular, monospace;
+    font-family: 'Source Han Mono', 'Font Awesome 6 Free', monospace;
 }
 
 #waybar {
-    background-color: #222222; /* Sway palette: unfocused/background */
+    background-color: rgba(0, 0, 0, 0); /* Sway palette: unfocused/background */
     color: #ffffff; /* Sway palette: focused/text */
     font-size: 14px;
 }
@@ -64,6 +64,17 @@
 /* -----------------------------------------------------------------------------
  * Module styles
  * -------------------------------------------------------------------------- */
+
+widget {
+    background-color: rgba(0, 0, 0, 0);
+}
+.modules-right widget box,
+.modules-right widget label, 
+label#window {
+    padding: 0px 12px;
+    margin: 0px 3px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
 
 /* Each module */
 #backlight,
@@ -78,7 +89,6 @@
 #pulseaudio,
 #temperature,
 #tray {
-    margin-left: 18px;
 }
 
 #backlight {
@@ -193,12 +203,12 @@
 }
 
 #workspaces button {
-    border-top: 2px solid transparent;
+    /* border-top: 2px solid transparent; */
     /* To compensate for the top border and still have vertical centering */
-    padding-bottom: 2px;
-    padding-left: 15px;
-    padding-right: 18px;
-    color: #888888; /* Sway palette: unfocused/text */
+    padding: 0px 12px;
+    background: rgba(0, 0, 0, 0.4);
+    color: #FFFFFF;
+    /* color: #888888; */ /* Sway palette: unfocused/text */
 }
 
 #workspaces button:hover {
@@ -209,19 +219,21 @@
 }
 
 #workspaces button.visible {
-    border-color: #333333; /* Sway palette focused_inactive/border */
-    color: #ffffff; /* Sway palette: focused_inactive/text */
-    background-color: #5f676a; /* Sway palette focused_inactive/background */
+    /* border-color: #000000; */ /* Sway palette focused_inactive/border */
+    /* color: #ffffff; */ /* Sway palette: focused_inactive/text */
+    background: rgba(0, 0, 0, 0.9);
+     /* Sway palette focused_inactive/background */
 }
 
 #workspaces button.focused {
-    border-color: #4c7899; /* Sway palette: focused/border */
-    color: #ffffff; /* Sway palette: focused/text */
-    background-color: #285577; /* Sway palette: focused/background */
+    /* border: solid 3px;
+    border-color: #222222; */ /* Sway palette: focused/border */
+    /* color: #ffffff; */ /* Sway palette: focused/text */
+    /* background-color: #285577; */ /* Sway palette: focused/background */
 }
 
 #workspaces button.urgent {
     border-color: #2f343a; /* Sway palette: urgent/border */
-    color: #ffffff; /* Sway palette: urgent/text */
+    /* color: #ffffff; */ /* Sway palette: urgent/text */
     background-color: #900000; /* Sway palette: urgent/background */
 }

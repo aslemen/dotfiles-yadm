@@ -151,7 +151,7 @@
     },
 
     "sway/window": {
-        "format": "{}",
+        "format": " {}",
         "max-length": 120
     },
 
