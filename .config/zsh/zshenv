@@ -102,3 +102,9 @@ fi
 # export for ros installation
 export ROSWELL_HOME=${LSHARE}/roswell
 # ref. https://github.com/roswell/roswell/issues/493
+
+# ------------------------
+# Go 
+# ------------------------
+export GOPATH=${LSHARE}/go
+export GOBIN=${HOME}/.local/bin
