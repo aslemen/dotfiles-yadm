@@ -134,6 +134,7 @@ echo "[zshrc] gitignore.io CLI command defined as gen-gitignore" >&2
 # Complementizer
 # ------------------------
 zstyle ':completion:*:default' menu select=2
+zstyle ':completion:*' matcher 'm:{a-z}={A-Z}'
 
 # ------------------------
 # History
