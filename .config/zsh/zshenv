@@ -38,9 +38,9 @@ fi
 DIR_DENO=${LSHARE}/deno
 if [ -d ${DIR_DENO} ]
 then
-    export DENO_INSTALL=${DIR_DENO}
-    export PATH=${DENO_INSTALL}/bin:${PATH}
     export DENO_DIR=${HOME}/.cache/deno
+    export DENO_INSTALL_ROOT=${DIR_DENO}
+    export PATH=${DENO_INSTALL_ROOT}/bin:${PATH}
 fi
 
 # ------------------------
@@ -103,8 +103,20 @@ fi
 export ROSWELL_HOME=${LSHARE}/roswell
 # ref. https://github.com/roswell/roswell/issues/493
 
+if [ -d ${ROSWELL_HOME}/bin ]
+then
+    export PATH=${ROSWELL_HOME}/bin:${PATH}
+fi
+
 # ------------------------
 # Go 
 # ------------------------
 export GOPATH=${LSHARE}/go
 export GOBIN=${HOME}/.local/bin
+
+
+# ------------------------
+# R
+# ------------------------
+export R_LIBS_USER=${LSHARE}/R
+
