@@ -38,9 +38,9 @@ fi
 DIR_DENO=${LSHARE}/deno
 if [ -d ${DIR_DENO} ]
 then
-    export DENO_INSTALL=${DIR_DENO}
-    export PATH=${DENO_INSTALL}/bin:${PATH}
     export DENO_DIR=${HOME}/.cache/deno
+    export DENO_INSTALL_ROOT=${DIR_DENO}
+    export PATH=${DENO_INSTALL_ROOT}/bin:${PATH}
 fi
 
 # ------------------------
@@ -113,6 +113,9 @@ fi
 export GOPATH=${LSHARE}/go
 GO_EXEC_BIN=${GOPATH}/bin
 if [ -d $GO_EXEC_BIN ] 
-then
-    export PATH=${GO_EXEC_BIN}:${PATH}
 fi
+# ------------------------
+# R
+# ------------------------
+export R_LIBS_USER=${LSHARE}/R
+
