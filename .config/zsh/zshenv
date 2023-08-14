@@ -100,11 +100,19 @@ fi
 # Roswell (for Common Lisp)
 # ------------------------
 # export for ros installation
-export ROSWELL_HOME=${LSHARE}/roswell
 # ref. https://github.com/roswell/roswell/issues/493
+export ROSWELL_HOME=${LSHARE}/roswell
+if [ -d ${ROSWELL_HOME}/bin ]
+then
+    export PATH=${ROSWELL_HOME}/bin:${PATH}
+fi
 
 # ------------------------
 # Go 
 # ------------------------
 export GOPATH=${LSHARE}/go
-export GOBIN=${HOME}/.local/bin
+GO_EXEC_BIN=${GOPATH}/bin
+if [ -d $GO_EXEC_BIN ] 
+then
+    export PATH=${GO_EXEC_BIN}:${PATH}
+fi
