@@ -113,7 +113,10 @@ fi
 export GOPATH=${LSHARE}/go
 GO_EXEC_BIN=${GOPATH}/bin
 if [ -d $GO_EXEC_BIN ] 
+then
+    export PATH=${GO_EXEC_BIN}:${PATH}
 fi
+
 # ------------------------
 # R
 # ------------------------
