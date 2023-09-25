@@ -122,3 +122,13 @@ fi
 # ------------------------
 export R_LIBS_USER=${LSHARE}/R
 
+# ------------------------
+# NVM (Node Version Manager)
+# ------------------------
+export NVM_DIR=${HOME}/.config/nvm
+
+# ------------------------
+# AWS
+# ------------------------
+export AWS_CONFIG_FILE=${HOME}/.config/aws/config
+export AWS_CONFIG_FILE=${HOME}/.config/aws/credentials

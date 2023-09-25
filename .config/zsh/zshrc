@@ -119,6 +119,17 @@ else
 fi
 
 # ------------------------
+# NVM (Node Version Manager)
+# ------------------------
+if [ -d ${NVM_DIR} ]
+then
+    echo "[zshrc] ${STR_LOADED}: NVM (Node Version Manager)" >&2
+    source ${NVM_DIR}/nvm.sh
+else
+    echo "[zshrc] ${STR_NOT_DETECTED}: NVM (Node Version Manager)" >&2
+fi
+
+# ------------------------
 # gitignore.io
 # ------------------------
 function gen-gitignore() {
